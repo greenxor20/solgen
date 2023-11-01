@@ -1,7 +1,7 @@
 #!/bin/python
 
 import json
-import sys
+import sys, os, stat
 
 NO_DEFAULT_VAL = "__NO_DEFAULT_VAL__"
 
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     
     outf = open(outfile_name, 'w')
 
-    res = f"""
+    res = f"""#!/bin/python
 import sys    
 
 def {func_name}({decl_args_str}):
@@ -105,7 +105,8 @@ def {func_name}({decl_args_str}):
 def main(argv):
     {arg_assignment}
     {typelist_def}
-    {func_name}({invokation_args})
+    result = {func_name}({invokation_args})
+    print(f"{{result=}}")
 
 if __name__ == "__main__":
     main(sys.argv)
@@ -113,4 +114,7 @@ if __name__ == "__main__":
 """
     print(f"generated result:\n{res}")
     outf.write(res)
+    outf.close()
+    os.system(f"chmod +x {outfile_name}")
+
     
