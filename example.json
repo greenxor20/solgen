@@ -1,0 +1,19 @@
+{
+	"name":"foo",
+	"args":[
+		{
+			"name":"arg1",
+			"dtype":"bool"
+		},
+		{
+			"name":"arg2"
+		},
+		"arg4",
+		{
+			"name":"arg3",
+			"dtype":"int"
+		}
+	],
+	"body":"print(arg1, arg2, arg3)"
+}
+	
